@@ -4,10 +4,10 @@
   "main": "index.js",
   "type": "module",
   "engines": {
-    "node": "20"
+    "node": "22"
   },
   "scripts": {
-    "test": "jest -i",
+    "test": "jest",
     "start": "node src/server.js",
     "dev": "nodemon src/server.js"
   },
@@ -24,9 +24,10 @@
     "bcrypt": "^6.0.0",
     "cors": "^2.8.5",
     "express": "^5.2.1",
-    "uuid": "^13.0.0"
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.28.5",
     "@babel/preset-env": "^7.28.5",
     "@types/bcrypt": "^6.0.0",
     "@types/express": "^5.0.6",
