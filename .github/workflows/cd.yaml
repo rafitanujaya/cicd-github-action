@@ -24,7 +24,10 @@ jobs:
           port: ${{secrets.SSH_PORT}}
           script: |
             whoami
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+            [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
             cd cicd-github-action/
             git pull origin main
-            sudo npm install
-            sudo pm2 restart cicd-github-action
+            npm install
+            pm2 restart cicd-github-action
