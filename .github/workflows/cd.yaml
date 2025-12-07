@@ -1,12 +1,14 @@
 name: Continous Deployment
 
 on:
-  push:
-    branches:
-      - main
+  workflow_run:
+    workflows: ["Continuous Integration"]     # sesuai nama workflow CI di atas
+    types:
+      - completed
 
 jobs:
   deploy:
+    if: ${{ github.event.workflow_run.head_branch == 'main' && github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     environment: prod
 
@@ -21,6 +23,7 @@ jobs:
           password: ${{secrets.SSH_PASSWORD}}
           port: ${{secrets.SSH_PORT}}
           script: |
+            bash -lc
             echo "user: $(whoami)"
             cd cicd-github-action/
             ls -a
