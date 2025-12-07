@@ -1,7 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import { ResponseError } from './error.js'
-import { createUserService } from './service.js'
+import { createUserService, getListUserService } from './service.js'
 
 
 const app = express()
@@ -24,6 +24,14 @@ app.post('/api/users', (req, res) => {
 
     res.status(201).json({
         message: 'Berhasil menambahkan user',
+        data: result
+    })
+})
+
+app.get('/api/users', (req, res) => {
+    const result = getListUserService()
+    res.json({
+        message: 'Success Get List User',
         data: result
     })
 })

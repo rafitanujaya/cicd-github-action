@@ -1,6 +1,6 @@
 import { ResponseError } from "./error.js"
 import { v4 as uuid } from "uuid"
-import { createUserRepository } from "./repository.js"
+import { createUserRepository, getListUserRepository } from "./repository.js"
 
 const createUserService = (payload) => {
     if (!payload.name) {
@@ -21,6 +21,11 @@ const createUserService = (payload) => {
     return user
 }
 
+const getListUserService = () => {
+    return getListUserRepository()
+}
+
 export {
-    createUserService
+    createUserService,
+    getListUserService
 }
