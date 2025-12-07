@@ -12,7 +12,7 @@ jobs:
 
     steps:
       - name: Run script
-        run: ${{secrets.SSH_HOST}}
+        run: echo ${{secrets.SSH_HOST}}
       - name: Deploy app
         uses: 'appleboy/ssh-action@master'
         with:
